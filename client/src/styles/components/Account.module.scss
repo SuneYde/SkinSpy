@@ -1,0 +1,62 @@
+.intoText {
+  color: white;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.title {
+  font-family: var(--font-semibold);
+  font-size: 1.25rem;
+}
+
+.subtitle {
+  font-family: var(--font-medium);
+  font-size: 0.9rem;
+  color: #c1c1c2;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #14191f;
+}
+
+.accountContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.userDetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input {
+  background-color: #14191f;
+  border: 2px solid #2d3c4e;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: white;
+  font-family: var(--font-regular);
+  font-size: 0.9rem;
+}
+
+.inputLabel {
+  font-family: var(--font-medium);
+  font-size: 0.9rem;
+  color: #c1c1c2;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.inputs {
+  display: flex;
+  gap: 3rem;
+}

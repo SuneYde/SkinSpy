@@ -1,0 +1,202 @@
+.container {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  align-items: center;
+  background-color: #14191f;
+  color: white;
+  border-radius: 10px;
+  font-family: var(--font-bold);
+  height: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: border-radius 0.3s ease-in-out;
+}
+
+.head,
+.bodyLab {
+  justify-self: center;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  align-items: center;
+  background-color: #14191f;
+  height: 80px;
+  border-radius: 10px;
+  font-family: var(--font-semibold);
+}
+
+.results {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: white;
+}
+
+/* Width & Height */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  background: rgb(46, 46, 46);
+  border-radius: 10px;
+}
+
+/* Thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+  background: #008cff;
+  border-radius: 10px;
+}
+
+/* On hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0033ff;
+}
+
+.skin {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rarityVisualiser {
+  width: 125px;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  position: relative;
+}
+
+.strip {
+  height: 100%;
+  width: 10px;
+  background-color: #00fff2;
+  border-radius: 8px 0px 0px 8px;
+}
+.fade {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.Consumerfade,
+.Base-Gradefade {
+  background: linear-gradient(to right, #c4c4c47d, #c4c4c42f, #c4c4c400);
+}
+
+.Industrialfade,
+.Base-Gradefade {
+  background: linear-gradient(to right, #6496e17d, #6496e12f, #6496e100);
+}
+
+.Mil-Specfade,
+.High-Gradefade {
+  background: linear-gradient(to right, #0026ff82, #0026ff2f, #6496e100);
+}
+
+.Restrictedfade,
+.Remarkablefade {
+  background: linear-gradient(to right, #5d00ff82, #5d00ff2f, #6496e100);
+}
+
+.Classifiedfade,
+.Exoticfade {
+  background: linear-gradient(to right, #ff00ff82, #ff00ff2f, #6496e100);
+}
+
+.Covertfade,
+.Extraordinaryfade {
+  background: linear-gradient(to right, #ff000081, #ff00002f, #6496e100);
+}
+
+.Consumer,
+.Base-Grade-Container {
+  background-color: #c4c4c4;
+}
+
+.Industrial {
+  background-color: #6496e1;
+}
+
+.Mil-Spec,
+.High-Grade {
+  background-color: #0026ff;
+}
+
+.Restricted,
+.Remarkable {
+  background-color: #5500ff;
+}
+
+.Classified,
+.Exotic {
+  background-color: #ff00ff;
+}
+
+.Covert,
+.Extraordinary {
+  background-color: #ff0000;
+}
+
+.img {
+  height: 75px;
+  filter: drop-shadow(0px 5px 2px #0000006c);
+}
+
+.imgContainer {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weapon {
+  color: #878b90;
+}
+
+.skinText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.skinHeadText {
+  margin-left: 1rem;
+}
+
+.linkBtn {
+  padding: 1rem;
+  background-color: #93b107;
+  color: white;
+  border-radius: 4px;
+  font-family: var(--font-bold);
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #7a8c07;
+  }
+}

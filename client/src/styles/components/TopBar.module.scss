@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}
+
+.details {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-right: 1rem;
+  font-family: var(--font-medium);
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.notifications {
+  position: relative;
+  cursor: pointer;
+}
+
+.notifications i {
+  font-size: 1.25rem;
+}
+
+.blop {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 12.5px;
+  height: 12.5px;
+  border-radius: 50%;
+  background-color: #0077ff;
+  border: 2px solid #00070e;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+}
+
+.balance {
+  display: flex;
+  background-color: #001e3d;
+  border-radius: 6px;
+}
+.addMoney {
+  height: 40px;
+  width: 40px;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  box-shadow: 0px 3px 0px #00326a, inset 0px 1px 0px #53a3ff;
+  transform: translateY(0px);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    box-shadow: 0px 4px 0px #001b3a, inset 0px 1px 0px rgb(1, 119, 255);
+    transform: translateY(-1px);
+    background-color: #0055cc;
+  }
+}
+
+.icon {
+  margin-right: 0.5rem;
+}

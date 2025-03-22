@@ -1,0 +1,98 @@
+.logo {
+  color: #0077ff;
+  font-size: 1.75rem;
+  background-color: #00162c;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.logoContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.logoText {
+  font-family: var(--font-semibold);
+  color: white;
+  font-size: 1.25rem;
+}
+
+.tagLine {
+  font-family: var(--font-medium);
+  color: #a9a9a9;
+  font-size: 0.75rem;
+}
+
+.divider {
+  height: 2px;
+  width: 100%;
+  background-color: #14273a;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.navLink {
+  text-decoration: none;
+}
+
+.navButton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: none;
+  color: white;
+  font-family: var(--font-medium);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #011e3b;
+  }
+}
+
+.active {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border: 2px solid #002851;
+  border-radius: 8px;
+  background-color: var(--nav-button-background);
+  color: white;
+  font-family: var(--font-medium);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: var(--nav-button-background);
+  }
+}
+
+.navButton i {
+  font-size: 1.15rem;
+  width: 20px;
+}
+
+.spanNav {
+  font-size: 0.9rem;
+}

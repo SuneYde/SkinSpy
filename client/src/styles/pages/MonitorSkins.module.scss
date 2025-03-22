@@ -1,0 +1,16 @@
+.filterBar {
+  width: 300px;
+  background-color: var(--filterbar-background);
+  height: calc(100vh - 92.5px);
+  border-right: 2px solid #262f3a;
+}
+
+.container {
+  display: flex;
+}
+
+.content {
+  width: calc(100% - 300px);
+  height: calc(100vh - 92.5px);
+  overflow-y: auto;
+}

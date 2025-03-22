@@ -1,0 +1,90 @@
+.settingsContainer {
+  padding: 1.5rem 2rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-family: var(--font-semibold);
+  color: white;
+}
+
+.button {
+  background: none;
+  border: none;
+  color: white;
+  font-family: var(--font-semibold);
+  font-size: 0.9rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: #161b217e;
+  }
+}
+
+.active {
+  background-color: #161b21;
+  &:hover {
+    background-color: #161b21;
+  }
+}
+
+.settingsNavbar {
+  display: flex;
+  gap: 2rem;
+}
+
+.upperContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.saveButton {
+  background-color: #0077ff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-family: var(--font-semibold);
+  font-size: 0.9rem;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: #003c81;
+  }
+  &:disabled {
+    background-color: #0077ff7e;
+    cursor: not-allowed;
+  }
+}
+
+.discardButton {
+  background: none;
+  border: 2px solid #ff0000;
+  color: #ff0000;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-family: var(--font-semibold);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background-color: #ff0000;
+    color: white;
+  }
+  &:disabled {
+    border: 2px solid #303030;
+    color: #303030;
+    cursor: not-allowed;
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}

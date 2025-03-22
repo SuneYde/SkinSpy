@@ -1,0 +1,17 @@
+.options {
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.option {
+  padding: 0.5rem 1rem;
+  font-family: var(--font-medium);
+  font-size: 0.9rem;
+  background-color: var(--filterbar-background);
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: #101822;
+  }
+}

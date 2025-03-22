@@ -1,0 +1,9 @@
+.containerSkin {
+  padding: 1rem;
+  background-color: #101822;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  &:hover {
+    background-color: #1e2a38;
+  }
+}
