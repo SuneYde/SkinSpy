@@ -1,0 +1,406 @@
+.container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  grid-template-rows: 1fr 4fr;
+}
+
+.upper {
+  width: 100%;
+  background-color: #0d1014;
+  border: 2px solid #262f3a;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lower {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.searchSkins,
+.details {
+  background-color: #0d1014;
+  border-radius: 10px;
+  border: 2px solid #262f3a;
+}
+
+.searchSkins {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.details {
+  padding: 1.5rem;
+}
+
+.upper {
+  padding: 1.25rem;
+}
+
+.areaTitle {
+  color: #fff;
+  font-size: 1rem;
+  font-family: var(--font-semibold);
+}
+
+.inputContainer {
+  display: grid;
+  grid-template-columns: 20fr 1fr;
+  background-color: #181f25;
+  border: 2px solid #262f3a;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  margin-left: 1rem;
+  height: 100%;
+  color: #55d64a;
+  background: none;
+  border: none;
+  font-family: var(--font-semibold);
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon {
+  color: #55d64a;
+}
+
+.mainInput {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  height: 100%;
+}
+
+.btnInput {
+  background-color: #222b33;
+  height: 35px;
+  width: 35px;
+  border: none;
+  border-radius: 50%;
+  color: #ffffff70;
+  font-family: var(--font-semibold);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #34414e;
+  }
+}
+
+.searchSkins {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.advancedSettings {
+  background-color: #181f25;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 3.5rem;
+  border-radius: 8px;
+  border-top: 2px solid #262f3a;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.isUnFolded {
+  height: 20rem;
+}
+
+.topAdvanced {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #3e566a;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.upperSearch {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.advancedBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 14rem;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.inputContainerAdvanced {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.inputContainerAdvancedSolo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.inputTitle {
+  color: #fff;
+  font-family: var(--font-medium);
+  font-size: 0.75rem;
+}
+
+.lowerIcon {
+  transition: all 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  background-color: #181f25;
+  border-radius: 10px;
+  border: 2px solid #262f3a;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.customDropdown {
+  position: relative;
+}
+
+.choice {
+  width: 100%;
+  padding: 0.5rem;
+  color: #fff;
+  font-family: var(--font-medium);
+  background-color: #0d1014;
+  border: 2px solid #262f3a;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #181f25;
+  }
+  text-align: left;
+}
+
+.inputAdvanced {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.option {
+  padding: 0.35rem 1rem;
+  cursor: pointer;
+  color: white;
+  font-family: var(--font-medium);
+  font-size: 0.75rem;
+  &:hover {
+    background-color: #0f1418;
+  }
+}
+
+.advancedInput {
+  width: 100%;
+  padding: 0.5rem;
+  color: #fff;
+  font-family: var(--font-medium);
+  background-color: #0d1014;
+  border: 2px solid #262f3a;
+  border-radius: 6px;
+  transition: all 0.3s;
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &:focus {
+    outline: none;
+    border: 2px solid #008cff;
+  }
+  text-align: left;
+}
+
+.error {
+  color: #ff0000;
+  font-family: var(--font-semibold);
+  font-size: 0.75rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.errorShowing {
+  visibility: visible;
+  opacity: 1;
+}
+
+.searchInputContainer {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: #181f25;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 2px solid #262f3a;
+}
+.searchIcon {
+  color: #fff;
+}
+
+.searchInput {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: var(--font-medium);
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+}
+
+.searchBody {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow-y: auto;
+  height: 24rem;
+}
+
+.weaponFormatted {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.skinCard {
+  height: 230px;
+  width: 100%;
+  background-color: #181f25;
+  border: 2px solid #262f3a;
+  border-radius: 6px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #12171b;
+  }
+}
+
+.rarity {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  background-color: #ff0000;
+}
+
+.moreDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.renderMore {
+  background-color: #008cff;
+  font-family: var(--font-semibold);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #005aad;
+  }
+}
+
+.weaponImg {
+  height: 100px;
+  width: 100%;
+}
+
+.upperCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wear {
+  color: #fff;
+  font-family: var(--font-medium);
+  font-size: 0.9rem;
+}
+
+.name {
+  color: #8b8f92;
+  font-family: var(--font-semibold);
+  font-size: 0.8rem;
+}
+
+.priceRange {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-family: var(--font-medium);
+  color: #ffffff;
+}
+
+.dollarSign {
+  color: #55d64a;
+  font-family: var(--font-semibold);
+}
+
+.price {
+  font-size: 0.9rem;
+}
+
+.lowerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}

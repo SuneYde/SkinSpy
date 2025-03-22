@@ -2,16 +2,13 @@ import styles from "../styles/components/monitorSidebar.module.scss";
 import { useState, useEffect } from "react";
 import marketPlacesData from "../utils/marketPlaces";
 import { useSelector } from "react-redux";
-import UpgradeSubscriptionContainer from "./upgradeSubscriptionContainer";
 
-const MonitorSidebar = () => {
+const MonitorSidebar = ({ setIsUpgradeSubscriptionOpen }) => {
   const [marketPlaces, setMarketPlaces] = useState(marketPlacesData);
   const [helperText, setHelperText] = useState({
     maxSpendLimit: false,
     maxTradesThisSession: false,
   });
-  const [isUpgradeSubscriptionOpen, setIsUpgradeSubscriptionOpen] =
-    useState(false);
   const user = useSelector((state) => state.auth.user);
   const [emailNotification, setEmailNotification] = useState(true);
 
@@ -44,27 +41,6 @@ const MonitorSidebar = () => {
 
   return (
     <div className={styles.container}>
-      {isUpgradeSubscriptionOpen ? (
-        <div
-          onClick={() => setIsUpgradeSubscriptionOpen(false)}
-          className={`${styles.overlay} ${styles.overlayVisible}`}
-        ></div>
-      ) : (
-        <div className={styles.overlay}></div>
-      )}
-      {isUpgradeSubscriptionOpen ? (
-        <div
-          className={`${styles.subscriptionUpgradeContainer} ${styles.open}`}
-        >
-          <UpgradeSubscriptionContainer
-            setIsUpgradeSubscriptionOpen={setIsUpgradeSubscriptionOpen}
-          />
-        </div>
-      ) : (
-        <div className={styles.subscriptionUpgradeContainer}>
-          <UpgradeSubscriptionContainer />
-        </div>
-      )}
       <div className={styles.divContainer}>
         <button className={styles.submit}>
           <i className="fa-solid fa-desktop"></i>

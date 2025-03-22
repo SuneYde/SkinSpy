@@ -26,6 +26,11 @@ const LoginPage = () => {
     dispatch(login(userData));
     if (user) {
       navigate("/");
+      if (localStorage.getItem("token")) {
+        dispatch(checkAuth());
+      } else {
+        navigate("/login");
+      }
     }
   };
   useEffect(() => {
@@ -93,7 +98,7 @@ const LoginPage = () => {
           <button
             type="submit"
             className={styles.submitButton}
-            disabled={!canLogIn}
+            disabled={!canLogIn || isLoading}
           >
             {isLoading ? "Processing..." : "Log In"}
           </button>

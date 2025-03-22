@@ -5,14 +5,19 @@ import ReturnSkins from "../components/returnSkins";
 
 const Database = () => {
   const [results, setResults] = useState([]);
+  const [loadingState, setLoadingState] = useState(true);
   const containerRef = useRef(null);
   return (
     <div className={styles.container}>
       <div className={styles.filterBar}>
-        <Filterbar setResults={setResults} containerRef={containerRef} />
+        <Filterbar
+          setLoadingState={setLoadingState}
+          setResults={setResults}
+          containerRef={containerRef}
+        />
       </div>
       <div className={styles.results} ref={containerRef}>
-        <ReturnSkins results={results} />
+        <ReturnSkins loadingState={loadingState} results={results} />
       </div>
     </div>
   );

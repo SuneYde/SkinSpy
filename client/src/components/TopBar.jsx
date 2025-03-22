@@ -9,7 +9,9 @@ const TopBar = () => {
         <div className={styles.balance}>
           <div className={styles.inner}>
             <div className={styles.icon}>$</div>
-            <div className={styles.amount}>{user.balance.toFixed(2)}</div>
+            <div className={styles.amount}>
+              {isLoading ? "..." : user?.balance.toFixed(2)}
+            </div>
           </div>
           <button className={styles.addMoney}>
             <i className="fa-solid fa-plus"></i>

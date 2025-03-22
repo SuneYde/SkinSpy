@@ -37,7 +37,7 @@
   text-align: center;
   color: white;
   gap: 1rem;
-  padding: 5rem 1rem;
+  padding: 3rem 1rem;
   height: 100%;
 }
 
@@ -200,11 +200,16 @@
   align-items: center;
   font-size: 0.5rem;
 }
+.termsText {
+  font-family: var(--font-medium);
+  color: #8b8b8b;
+  font-size: 0.7rem;
+}
 
 .checkText {
   font-family: var(--font-semibold);
   color: #2a3845;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .unchecked {
@@ -223,4 +228,38 @@
   font-family: var(--font-medium);
   color: #ff0033;
   font-size: 0.8rem;
+}
+
+.termsBox {
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: 2px solid #353535;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: #252525;
+  }
+}
+
+.termsChecked {
+  background-color: #0077ff;
+  border: 2px solid #0077ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: #0055ff;
+  }
+}
+
+.termsChecked i {
+  font-size: 0.75rem;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

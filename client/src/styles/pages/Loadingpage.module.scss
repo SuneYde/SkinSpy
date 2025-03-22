@@ -1,0 +1,28 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0e0e0e;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0 0px;
+  }
+  100% {
+    background-position: 200% 0px;
+  }
+}
+/* 383838 */
+.logo {
+  font-family: var(--font-bold);
+  font-size: 2rem;
+  background: linear-gradient(90deg, #616161, #383838);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 1s infinite;
+}

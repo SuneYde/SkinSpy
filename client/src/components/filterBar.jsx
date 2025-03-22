@@ -7,7 +7,7 @@ import dropdownStatusData from "../utils/dropdownStatus";
 import csgoCollections from "../utils/csgoCollections";
 import SearchQuery from "./searchQuery";
 
-const Filterbar = ({ setResults, containerRef }) => {
+const Filterbar = ({ setLoadingState, setResults, containerRef }) => {
   /* -------------------------------------------------------------------------- */
   /*                                  VARIABLES                                 */
   /* -------------------------------------------------------------------------- */
@@ -59,6 +59,7 @@ const Filterbar = ({ setResults, containerRef }) => {
   useEffect(() => {
     const findSkins = async () => {
       try {
+        setLoadingState(true);
         const url = `http://localhost:3000/skins`;
         const response = await fetch(url);
         const data = await response.json();
@@ -124,6 +125,11 @@ const Filterbar = ({ setResults, containerRef }) => {
     inputValues,
     unsortedSkins,
   ]);
+
+  useEffect(() => {
+    if (displayedSkins.length === 0) return;
+    setLoadingState(false);
+  }, [displayedSkins]);
 
   /* -------------------------------------------------------------------------- */
   /*                                  FUNCTIONS                                 */

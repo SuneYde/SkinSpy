@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/authActions";
 import { useNavigate } from "react-router-dom";
 import { clearError } from "../redux/authSlice";
+import { checkAuth } from "../redux/authActions";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isLoading, error } = useSelector((state) => state.auth);
+  const { user, isLoading, error, isAuthenticated } = useSelector(
+    (state) => state.auth
+  );
+  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [canSignUp, setCanSignUp] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
@@ -26,13 +30,14 @@ const RegisterPage = () => {
       userData.email &&
       userData.password &&
       userData.username &&
-      confirmPassword
+      confirmPassword &&
+      isTermsAccepted
     ) {
       setCanSignUp(true);
     } else {
       setCanSignUp(false);
     }
-  }, [userData, confirmPassword]);
+  }, [userData, confirmPassword, isTermsAccepted]);
 
   useEffect(() => {
     try {
@@ -46,14 +51,15 @@ const RegisterPage = () => {
   }, [userData.password]);
 
   useEffect(() => {
-    try {
-      if (user) {
-        navigate("/");
+    if (isAuthenticated && !isLoading && user) {
+      navigate("/");
+      if (localStorage.getItem("token")) {
+        dispatch(checkAuth());
+      } else {
+        navigate("/login");
       }
-    } catch (error) {
-      console.error(error);
     }
-  }, [user]);
+  }, [isAuthenticated, isLoading, user, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,9 +68,6 @@ const RegisterPage = () => {
       return;
     }
     dispatch(register(userData));
-    if (!error) {
-      navigate("/");
-    }
   };
   return (
     <div className={styles.container}>
@@ -186,12 +189,28 @@ const RegisterPage = () => {
           <div className={styles.errorContainer}>
             {error && <p className={styles.error}>{error}</p>}
           </div>
+          <div className={styles.terms}>
+            <div
+              onClick={() => setIsTermsAccepted(!isTermsAccepted)}
+              className={`${styles.termsBox} ${
+                isTermsAccepted ? styles.termsChecked : ""
+              }`}
+            >
+              {isTermsAccepted && <i className="fa-solid fa-check"></i>}
+            </div>
+            <p className={styles.termsText}>
+              Click here to agree to our{" "}
+              <span className={styles.clicktext}>Terms & Conditions</span>
+              <span> and </span>
+              <span className={styles.clicktext}> Privacy Policy</span>
+            </p>
+          </div>
           <button
-            disabled={!canSignUp}
+            disabled={!canSignUp || isLoading}
             type="submit"
             className={styles.submitButton}
           >
-            Sign Up
+            {isLoading ? "Processing..." : "Sign Up"}
           </button>
           <div className={styles.helper}>
             <p className={styles.helperText}>

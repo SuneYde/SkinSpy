@@ -56,7 +56,6 @@ app.get("/allSkinNames", async (req, res) => {
 app.get("/skins", async (req, res) => {
   try {
     const skins = await Skin.find({});
-    console.log(skins); // Debugging output
     res.json(skins);
   } catch (error) {
     console.error("Error fetching skins:", error);

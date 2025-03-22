@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const Subscription = require("./Subscription");
+const Settings = require("./Settings");
 
 const userSchema = new mongoose.Schema(
   {
@@ -9,6 +10,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     role: { type: String, default: "user" },
     subscription: { type: mongoose.Schema.Types.ObjectId, ref: "Subscription" },
+    settings: { type: mongoose.Schema.Types.ObjectId, ref: "Settings" },
     balance: { type: Number, default: 0 },
     avatar: { type: String, default: "" },
   },

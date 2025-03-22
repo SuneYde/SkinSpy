@@ -6,6 +6,13 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const DashboardLayout = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
   return (
     <div className={styles.container}>
       <div className={styles.sidebar}>

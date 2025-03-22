@@ -15,10 +15,17 @@ const authMiddleware = (req, res, next) => {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+    // Check if decoded contains the expected user id structure
+    if (!decoded.user || !decoded.user.id) {
+      console.error("Token missing user or user.id in payload:", decoded);
+      return res.status(401).json({ error: "Invalid token structure" });
+    }
+
     // Add user from payload
     req.user = decoded.user;
     next();
   } catch (err) {
+    console.error("Token verification error:", err.message);
     res.status(401).json({ error: "Token is not valid" });
   }
 };

@@ -2,12 +2,24 @@ const AuthService = require("../services/AuthServices");
 
 class AuthController {
   static async registerUser(req, res) {
-    const userData = req.body;
-    const response = await AuthService.registerUser(userData);
-    if (response.error) {
-      return res.status(400).json(response);
+    try {
+      const userData = req.body;
+
+      const registrationResult = await AuthService.registerUser(userData);
+      if (registrationResult.error) {
+        return res.status(400).json(registrationResult);
+      }
+
+      // Return registration result with token
+      return res.status(201).json({
+        token: registrationResult.token,
+        user: registrationResult.user,
+        message: "User registered and logged in successfully",
+      });
+    } catch (err) {
+      console.error("Registration error:", err);
+      return res.status(500).json({ error: "Internal server error" });
     }
-    res.status(201).json(response);
   }
   static async loginUser(req, res) {
     const userData = req.body;

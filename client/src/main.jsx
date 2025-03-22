@@ -7,6 +7,7 @@ import "./styles/pages/main.scss";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { checkAuth } from "./redux/authActions.js";
+import LoadingPage from "./pages/Loadingpage.jsx";
 
 const InitStartup = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const InitStartup = () => {
   }, [dispatch]);
 
   // Show loading or application based on initialization state
-  return isInitialized ? <App /> : <div>Loading...</div>;
+  return isInitialized ? <App /> : <LoadingPage />;
 };
 
 createRoot(document.getElementById("root")).render(
