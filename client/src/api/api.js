@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3000", // Assuming your server runs on port 5000
+  baseURL: import.meta.env.VITE_BASE_URL, // Assuming your server runs on port 5000
 });
 
 // Add a request interceptor to automatically include token in headers

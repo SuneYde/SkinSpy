@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
 import styles from "../styles/components/TopBar.module.scss";
 import { useSelector } from "react-redux";
+import { api } from "../api/api";
+import getUserBalance from "../Helper/getUserBalance";
 
 const TopBar = () => {
-  const { user, isLoading } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.auth);
+  const [balance, setBalance] = useState();
+  useEffect(() => {
+    const getBalance = async () => {
+      const balance = await getUserBalance();
+      setBalance(balance);
+    };
+    getBalance();
+  }, []);
   return (
     <div className={styles.container}>
       <div className={styles.details}>
@@ -10,7 +21,7 @@ const TopBar = () => {
           <div className={styles.inner}>
             <div className={styles.icon}>$</div>
             <div className={styles.amount}>
-              {isLoading ? "..." : user?.balance.toFixed(2)}
+              {isLoading || balance == null ? "..." : `${balance.toFixed(2)}`}
             </div>
           </div>
           <button className={styles.addMoney}>

@@ -1,6 +1,17 @@
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const joi = require("joi");
 dotenv.config();
+
+const tokenSchema = joi.object({
+  user: joi
+    .object({
+      id: joi.string().required(),
+    })
+    .required(),
+  iat: joi.number().required(),
+  exp: joi.number().required(),
+});
 
 const authMiddleware = (req, res, next) => {
   // Get token from header
@@ -15,14 +26,15 @@ const authMiddleware = (req, res, next) => {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+    const { error, value } = tokenSchema.validate(decoded);
+
     // Check if decoded contains the expected user id structure
-    if (!decoded.user || !decoded.user.id) {
-      console.error("Token missing user or user.id in payload:", decoded);
+    if (error) {
+      console.error("Invalid JWT payload:", error.details);
       return res.status(401).json({ error: "Invalid token structure" });
     }
 
-    // Add user from payload
-    req.user = decoded.user;
+    req.user = value.user;
     next();
   } catch (err) {
     console.error("Token verification error:", err.message);

@@ -3,18 +3,37 @@ import UpgradeSubscriptionContainer from "./upgradeSubscriptionContainer";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import AddMenu from "./addMenu";
-const MonitorBody = ({ setIsUpgradeSubscriptionOpen }) => {
+const MonitorBody = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
   const [isAddMenuOpen, setIsAddMenuOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(9);
+  const [selectedSkin, setSelectedSkin] = useState(null);
+  const [userInput, setUserInput] = useState("");
+  const [isInfoBarOpen, setIsInfoBarOpen] = useState(false);
   const user = useSelector((state) => state.auth.user);
   return (
     <div className={styles.container}>
       <div
         className={`${styles.addMenu} ${isAddMenuOpen ? styles.isVisible : ""}`}
       >
-        <AddMenu setIsAddMenuOpen={setIsAddMenuOpen} />
+        <AddMenu
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          setIsAddMenuOpen={setIsAddMenuOpen}
+          selectedSkin={selectedSkin}
+          setSelectedSkin={setSelectedSkin}
+          userInput={userInput}
+          setUserInput={setUserInput}
+          isInfoBarOpen={isInfoBarOpen}
+          setIsInfoBarOpen={setIsInfoBarOpen}
+        />
       </div>
       <div
-        onClick={() => setIsAddMenuOpen(false)}
+        onClick={() => {
+          setIsAddMenuOpen(false);
+          setCurrentPage(9);
+          setSelectedSkin(null);
+          setUserInput("");
+        }}
         className={`${styles.overlay} ${
           isAddMenuOpen ? styles.overlayVisible : ""
         }`}
@@ -44,7 +63,7 @@ const MonitorBody = ({ setIsUpgradeSubscriptionOpen }) => {
           <div className={styles.header}>
             <div className={styles.leftSide}>
               <h2 className={styles.title}>Skin List</h2>
-              {user.subscription.plan === "Free" && (
+              {userPlan === "Free" && (
                 <button
                   className={styles.boost}
                   onClick={() => setIsUpgradeSubscriptionOpen(true)}

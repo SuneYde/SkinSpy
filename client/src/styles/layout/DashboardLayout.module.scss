@@ -8,6 +8,10 @@
   display: flex;
 }
 
+body {
+  overflow: hidden;
+}
+
 .sidebar {
   width: 350px;
   border-right: 2px solid #14273a;

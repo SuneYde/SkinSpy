@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import marketPlacesData from "../utils/marketPlaces";
 import { useSelector } from "react-redux";
 
-const MonitorSidebar = ({ setIsUpgradeSubscriptionOpen }) => {
+const MonitorSidebar = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
   const [marketPlaces, setMarketPlaces] = useState(marketPlacesData);
   const [helperText, setHelperText] = useState({
     maxSpendLimit: false,
@@ -23,15 +23,15 @@ const MonitorSidebar = ({ setIsUpgradeSubscriptionOpen }) => {
     if (marketPlace === "Skinport") {
       toggleMarketplace(marketPlace);
     } else if (marketPlace === "CSMoney") {
-      const userPlan = user.subscription.plan;
-      if (userPlan === "Plus") {
+      const userPlanData = userPlan;
+      if (userPlanData === "Plus") {
         toggleMarketplace(marketPlace);
       } else {
         setIsUpgradeSubscriptionOpen(true);
       }
     } else if (marketPlace === "CSFloat") {
-      const userPlan = user.subscription.plan;
-      if (userPlan === "Plus") {
+      const userPlanData = userPlan;
+      if (userPlanData === "Plus") {
         toggleMarketplace(marketPlace);
       } else {
         setIsUpgradeSubscriptionOpen(true);
@@ -58,8 +58,7 @@ const MonitorSidebar = ({ setIsUpgradeSubscriptionOpen }) => {
               className={`${
                 marketPlace === "Skinport"
                   ? styles.switchContainerDiv
-                  : marketPlace !== "Skinport" &&
-                    user.subscription.plan === "Free"
+                  : marketPlace !== "Skinport" && userPlan === "Free"
                   ? styles.disabledSwitchContainerDiv
                   : styles.switchContainerDiv
               }`}
@@ -69,8 +68,7 @@ const MonitorSidebar = ({ setIsUpgradeSubscriptionOpen }) => {
                   className={`${styles.iconVertical} ${
                     marketPlaces[marketPlace] ? styles.isOfflineVertical : ""
                   } ${
-                    marketPlace !== "Skinport" &&
-                    user.subscription.plan === "Free"
+                    marketPlace !== "Skinport" && userPlan === "Free"
                       ? styles.isOfflineVertical
                       : ""
                   }`}

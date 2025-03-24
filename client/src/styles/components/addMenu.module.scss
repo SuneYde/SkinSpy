@@ -274,7 +274,7 @@
   gap: 1rem;
   align-items: center;
   background-color: #181f25;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 10px;
   border: 2px solid #262f3a;
 }
@@ -299,7 +299,26 @@
   flex-direction: column;
   padding: 1rem;
   overflow-y: auto;
-  height: 24rem;
+  max-height: 500px;
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #262f3a;
+    border-radius: 0;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #181f25;
+    border-radius: 0;
+  }
+}
+
+.weapons {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .weaponFormatted {
@@ -325,6 +344,14 @@
   }
 }
 
+.selected {
+  background-color: #0d1826;
+  border: 2px solid #003883;
+  &:hover {
+    background-color: #0d1826;
+  }
+}
+
 .rarity {
   width: 15px;
   height: 15px;
@@ -346,7 +373,6 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   border: none;
-  margin-bottom: 1rem;
   cursor: pointer;
   transition: all 0.3s;
   &:hover {
@@ -403,4 +429,280 @@
 .img {
   width: 100%;
   height: auto;
+}
+
+.topSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addSkin {
+  padding: 0.5rem 1rem;
+  background-color: #008cff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  font-family: var(--font-semibold);
+  border: none;
+  border-radius: 4px;
+  border: 2px solid #3e98ff;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #005aad;
+  }
+}
+
+.topButtons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filter {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background-color: #181f25;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: #8b8f92;
+  font-family: var(--font-semibold);
+  border: none;
+  border-radius: 4px;
+  border: 2px solid #273342;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #1e272f;
+  }
+}
+
+.infoBar {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #262f3a;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  font-family: var(--font-medium);
+  cursor: pointer;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.infoBar i {
+  color: #5a7290;
+}
+
+.detailsTop {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #262f3a;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.infoBarContainer {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s;
+}
+
+.iconInfo {
+  font-size: 0.4rem;
+  color: #a5a2a2;
+}
+
+.info {
+  color: #a5a2a2;
+  font-family: var(--font-medium);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.totalValue {
+  color: #868789;
+  font-family: var(--font-semibold);
+}
+
+.value {
+  color: #55d64a;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skinName {
+  color: #fff;
+  font-family: var(--font-medium);
+  font-size: 1rem;
+}
+
+.skinListCard {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imgContainer2 {
+  background-color: #003883;
+  padding: 0rem 0.5rem;
+  border-radius: 6px;
+  border: 2px solid #0077ff;
+}
+
+.imgContainer2 img {
+  width: 75px;
+  filter: drop-shadow(0px 6px 3px #00000056);
+}
+
+.skinListBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 180px;
+  overflow-y: auto;
+  max-height: 300px;
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #262f3a;
+    border-radius: 0;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #181f25;
+    border-radius: 0;
+  }
+}
+
+.skinList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wantedPrice {
+  color: #757575;
+  font-family: var(--font-semibold);
+  font-size: 0.8rem;
+}
+
+.currency {
+  color: #55d64a;
+}
+
+.leftContent {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.weaponInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.removeBtn {
+  height: 100%;
+  background: none;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  border: 2px solid rgb(255, 0, 0);
+  border-radius: 8px;
+  color: rgb(255, 0, 0);
+  font-family: var(--font-semibold);
+  transition: all 0.3s;
+  font-size: 1rem;
+  margin-right: 1rem;
+  &:hover {
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+  }
+}
+
+.topSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-medium);
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.totalAmount {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.valueAmount {
+  color: #ffffff;
+}
+
+.details {
+  position: relative;
+  overflow: hidden;
+}
+
+.cartSummary {
+  height: 200px;
+  background-color: #181f25;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cartInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-medium);
+  color: #8b8f92;
+}
+
+.addSkins {
+  padding: 0.75rem 1rem;
+  background-color: #008cff;
+  color: white;
+  font-family: var(--font-semibold);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
