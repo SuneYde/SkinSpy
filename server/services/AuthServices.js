@@ -52,7 +52,6 @@ class AuthService {
       await newEmailSettings.save();
       await newSubscription.save();
       await newSettings.save();
-      const success = { success: "User registered successfully" };
       return {
         token,
         user: {

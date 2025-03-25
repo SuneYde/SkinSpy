@@ -151,6 +151,7 @@
   width: 1400px;
   border-radius: 10px;
   border: 2px solid #262f3a;
+  overflow-y: auto;
 }
 
 .isVisible {
@@ -175,4 +176,13 @@
 .overlayVisible {
   opacity: 1;
   visibility: visible;
+}
+
+/* RESPONSIVE STYLING */
+
+@media screen and (max-width: 1919px) {
+  .addMenu {
+    width: 1400px;
+    height: 95vh;
+  }
 }

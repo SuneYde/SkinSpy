@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styles from "../../styles/components/addMenu.module.scss";
 
 const AdvancedInput = ({ title, value, onChange, type = "number" }) => (
@@ -5,12 +6,20 @@ const AdvancedInput = ({ title, value, onChange, type = "number" }) => (
     <p className={styles.inputTitle}>{title}</p>
     <input
       type={type}
-      value={value}
+      value={isNaN(value) || value === null ? "" : value} // ✅ Prevents NaN issue
       className={styles.advancedInput}
       onChange={onChange}
     />
   </div>
 );
+
+const getWearCategory = (floatValue) => {
+  if (floatValue >= 0.0 && floatValue < 0.07) return "Factory New";
+  if (floatValue >= 0.07 && floatValue < 0.15) return "Minimal Wear";
+  if (floatValue >= 0.15 && floatValue < 0.37) return "Field-Tested";
+  if (floatValue >= 0.37 && floatValue < 0.45) return "Well-Worn";
+  return "Battle-Scarred";
+};
 
 const AdvancedSettings = ({
   skinData,
@@ -24,6 +33,20 @@ const AdvancedSettings = ({
   setIsAdvancedSettingsOpen,
   setError,
 }) => {
+  useEffect(() => {
+    if (skinData.MinFloat !== undefined && skinData.MaxFloat !== undefined) {
+      const minWear = getWearCategory(skinData.MinFloat);
+      const maxWear = getWearCategory(skinData.MaxFloat);
+
+      console.log(minWear, maxWear);
+
+      if (minWear !== maxWear) {
+        setSkinData((prev) => ({ ...prev, Wear: "Multiple" }));
+      } else {
+        setSkinData((prev) => ({ ...prev, Wear: minWear }));
+      }
+    }
+  }, [skinData.MinFloat, skinData.MaxFloat]);
   return (
     <div
       className={`${styles.advancedSettings} ${

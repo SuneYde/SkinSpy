@@ -50,7 +50,6 @@ const authSlice = createSlice({
       })
       .addCase(register.fulfilled, (state, action) => {
         state.isLoading = false;
-        // Only set user if returned from API
         if (action.payload.user) {
           state.user = action.payload.user;
           state.token = action.payload.token;

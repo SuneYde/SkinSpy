@@ -1,5 +1,6 @@
 import styles from "../../styles/components/addMenu.module.scss";
 import SkinCard from "./SkinCard";
+import currencyAdapter from "../../Helper/currencyAdapter";
 
 const SkinSearch = ({
   skins,
@@ -51,20 +52,30 @@ const SkinSearch = ({
                 onSelect={() => {
                   if (selectedSkin === skin.skin) {
                     setSelectedSkin(null);
+                    const skinRaw = skins.find((s) => s.skin === skin.skin);
+                    console.log(skinRaw);
+                    const suggestedPrice =
+                      skinRaw.wear_prices[skinRaw.wear_prices.length - 1];
+                    const formattedPrice = suggestedPrice * 0.1341;
                     setSkinData({
                       Wear: "Factory New",
                       MinFloat: "",
                       MaxFloat: "",
-                      MaxPrice: "",
+                      MaxPrice: formattedPrice,
                       Pattern: "",
                     });
                   } else {
                     setSelectedSkin(skin.skin);
+                    const skinRaw = skins.find((s) => s.skin === skin.skin);
+                    console.log(skinRaw);
+                    const wearValues = Object.values(skinRaw.wear_prices);
+                    const suggestedPrice = wearValues[wearValues.length - 1];
+                    const formattedPrice = suggestedPrice * 0.1341;
                     setSkinData({
                       Wear: "Factory New",
                       MinFloat: "",
                       MaxFloat: "",
-                      MaxPrice: "",
+                      MaxPrice: formattedPrice,
                       Pattern: "",
                     });
                   }

@@ -22,12 +22,14 @@
   background-color: white;
 }
 
-.notifications {
+.notifications,
+.inventory {
   position: relative;
   cursor: pointer;
 }
 
-.notifications i {
+.notifications i,
+.inventory i {
   font-size: 1.25rem;
 }
 

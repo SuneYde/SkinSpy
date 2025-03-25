@@ -10,9 +10,14 @@ class AuthController {
         return res.status(400).json(registrationResult);
       }
 
-      // Return registration result with token
+      res.cookie("token", registrationResult.token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "Strict",
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      });
+
       return res.status(201).json({
-        token: registrationResult.token,
         user: registrationResult.user,
         message: "User registered and logged in successfully",
       });
@@ -25,8 +30,16 @@ class AuthController {
     const userData = req.body;
     const response = await AuthService.loginUser(userData);
     if (response.error) {
-      return res.status(400).json(response);
+      return res.status(400).json(response.user);
     }
+
+    res.cookie("token", response.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
     res.status(200).json(response);
   }
   static async checkAuth(req, res) {

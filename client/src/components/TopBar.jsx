@@ -6,14 +6,7 @@ import getUserBalance from "../Helper/getUserBalance";
 
 const TopBar = () => {
   const { isLoading } = useSelector((state) => state.auth);
-  const [balance, setBalance] = useState();
-  useEffect(() => {
-    const getBalance = async () => {
-      const balance = await getUserBalance();
-      setBalance(balance);
-    };
-    getBalance();
-  }, []);
+  const balance = useSelector((state) => state.balance.balance);
   return (
     <div className={styles.container}>
       <div className={styles.details}>
@@ -24,11 +17,26 @@ const TopBar = () => {
               {isLoading || balance == null ? "..." : `${balance.toFixed(2)}`}
             </div>
           </div>
-          <button className={styles.addMoney}>
+          <button
+            className={styles.addMoney}
+            aria-label="Add Money"
+            title="Add Money"
+          >
             <i className="fa-solid fa-plus"></i>
           </button>
         </div>
-        <div className={styles.notifications}>
+        <div
+          className={styles.inventory}
+          aria-label="Inventory"
+          title="Inventory"
+        >
+          <i className="fa-solid fa-backpack"></i>
+        </div>
+        <div
+          className={styles.notifications}
+          aria-label="Notifications"
+          title="Notifications"
+        >
           <div className={styles.blop}></div>
           <i className="fa-solid fa-bell"></i>
         </div>

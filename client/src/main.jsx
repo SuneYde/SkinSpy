@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { checkAuth } from "./redux/authActions.js";
 import LoadingPage from "./pages/Loadingpage.jsx";
+import { getBalance } from "./redux/balanceActions.js";
 
 const InitStartup = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,8 @@ const InitStartup = () => {
 
   useEffect(() => {
     const initAuth = async () => {
-      if (localStorage.getItem("token")) {
-        await dispatch(checkAuth());
-      }
+      await dispatch(checkAuth());
+      await dispatch(getBalance());
       setIsInitialized(true);
     };
 

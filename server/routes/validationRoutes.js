@@ -17,4 +17,6 @@ router.get(
   ValController.validatedSubscription
 );
 
+router.post("/validate-order", authMiddleware, ValController.validateOrder);
+
 module.exports = router;

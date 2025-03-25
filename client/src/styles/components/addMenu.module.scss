@@ -676,7 +676,7 @@
 }
 
 .cartSummary {
-  height: 200px;
+  height: 235px;
   background-color: #181f25;
   position: absolute;
   bottom: 0;
@@ -695,6 +695,7 @@
   align-items: center;
   font-family: var(--font-medium);
   color: #8b8f92;
+  font-size: 0.8rem;
 }
 
 .addSkins {
@@ -705,4 +706,101 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .lower {
+    grid-template-columns: 1fr; // Adjust to a single column
+  }
+
+  .weaponFormatted {
+    grid-template-columns: 1fr 1fr; // Reduce to 2 columns
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    grid-template-rows: auto; // Let height adjust dynamically
+  }
+
+  .searchSkins,
+  .details {
+    width: 100%;
+  }
+
+  .weaponFormatted {
+    grid-template-columns: 1fr; // Single column for better readability
+  }
+
+  .skinCard {
+    height: auto;
+  }
+
+  .cartSummary {
+    position: static; // Prevents overlap on smaller screens
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .upper,
+  .lower {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .topButtons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .searchInputContainer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .inputContainer {
+    grid-template-columns: 1fr; // Stack input and button
+  }
+
+  .advancedSettings {
+    height: auto;
+  }
+
+  .searchBody {
+    max-height: 300px; // Reduce scrollable height
+  }
+}
+
+@media (max-width: 576px) {
+  .inputContainerAdvanced,
+  .inputContainerAdvancedSolo {
+    grid-template-columns: 1fr;
+  }
+
+  .topButtons {
+    flex-direction: column;
+  }
+
+  .cartSummary {
+    padding: 1rem;
+  }
+
+  .addSkin,
+  .filter {
+    width: 100%; // Full width buttons for easier touch interaction
+  }
+}
+
+.errorText {
+  color: #ff0000;
+  font-family: var(--font-semibold);
+  font-size: 0.75rem;
+  transition: all 0.3s;
+  text-align: center;
 }

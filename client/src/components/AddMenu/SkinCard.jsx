@@ -1,5 +1,6 @@
 import styles from "../../styles/components/addMenu.module.scss";
 import sanitizer from "../../Helper/Sanitizer";
+import currencyAdapter from "../../Helper/currencyAdapter";
 
 const SkinCard = ({ skin, isSelected, onSelect }) => {
   const renderImageSrc = (input) => {
@@ -67,8 +68,8 @@ const SkinCard = ({ skin, isSelected, onSelect }) => {
         <div className={styles.priceRange}>
           <span className={styles.dollarSign}>$</span>
           <p className={styles.price}>
-            {(Object.values(skin.wear_prices).at(-1) * 0.1341).toFixed(2)} -{" "}
-            {(Object.values(skin.wear_prices)[0] * 0.1341).toFixed(2)}
+            {currencyAdapter(Object.values(skin.wear_prices).at(-1))} -{" "}
+            {currencyAdapter(Object.values(skin.wear_prices)[0])}
           </p>
         </div>
       </div>

@@ -1,13 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../api/api";
 
+// 🔹 LOGIN: Store token in HTTP-only cookie
 export const login = createAsyncThunk(
   "auth/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await api.post("/auth/login", credentials);
-      // Save token in localStorage
-      localStorage.setItem("token", response.data.token);
+      const response = await api.post("/auth/login", credentials, {
+        withCredentials: true, // ✅ Sends & stores cookies automatically
+      });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.error || "Login failed");
@@ -15,12 +16,14 @@ export const login = createAsyncThunk(
   }
 );
 
+// 🔹 REGISTER: Store token in HTTP-only cookie
 export const register = createAsyncThunk(
   "auth/register",
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await api.post("/auth/register", userData);
-      localStorage.setItem("token", response.data.token);
+      const response = await api.post("/auth/register", userData, {
+        withCredentials: true, // ✅ Sends & stores cookies automatically
+      });
       return response.data;
     } catch (error) {
       return rejectWithValue(
@@ -30,19 +33,16 @@ export const register = createAsyncThunk(
   }
 );
 
+// 🔹 CHECK AUTH: Validate user session (no manual token needed)
 export const checkAuth = createAsyncThunk(
   "auth/checkAuth",
   async (_, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("token");
-      if (!token) return rejectWithValue("No token found");
-
-      // Make sure we set the Authorization header with the token
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      const response = await api.get("/auth/check");
+      const response = await api.get("/auth/check", {
+        withCredentials: true, // ✅ Cookies are sent automatically
+      });
       return response.data;
     } catch (error) {
-      localStorage.removeItem("token"); // Clear invalid token
       return rejectWithValue(
         error.response?.data?.error || "Authentication check failed"
       );
@@ -50,7 +50,15 @@ export const checkAuth = createAsyncThunk(
   }
 );
 
-export const logout = () => {
-  localStorage.removeItem("token");
-  return { type: "auth/logout" };
-};
+// 🔹 LOGOUT: Clear session by removing HTTP-only cookie
+export const logout = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await api.post("/auth/logout", {}, { withCredentials: true }); // ✅ Backend clears cookie
+      return { message: "Logged out successfully" };
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.error || "Logout failed");
+    }
+  }
+);

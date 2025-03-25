@@ -14,8 +14,7 @@ const tokenSchema = joi.object({
 });
 
 const authMiddleware = (req, res, next) => {
-  // Get token from header
-  const token = req.header("Authorization")?.replace("Bearer ", "");
+  const token = req.cookies.token;
 
   // Check if no token
   if (!token) {
@@ -25,10 +24,7 @@ const authMiddleware = (req, res, next) => {
   try {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
     const { error, value } = tokenSchema.validate(decoded);
-
-    // Check if decoded contains the expected user id structure
     if (error) {
       console.error("Invalid JWT payload:", error.details);
       return res.status(401).json({ error: "Invalid token structure" });

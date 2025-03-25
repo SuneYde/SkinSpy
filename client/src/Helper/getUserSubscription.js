@@ -1,14 +1,9 @@
 import { api } from "../api/api";
 
-const getUserSubscription = async (userId) => {
+const getUserSubscription = async () => {
   try {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-
     const response = await api.get("validation/validated-subscription", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
     });
     if (response.data.error) {
       console.error(response.data.error);

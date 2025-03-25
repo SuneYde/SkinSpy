@@ -2,7 +2,6 @@
 import styles from "../styles/components/addMenu.module.scss";
 import { useSelector } from "react-redux";
 import { useState, useRef, useEffect } from "react";
-import sanitizer from "../Helper/Sanitizer";
 
 // Component Imports
 import TradeUrlInput from "./AddMenu/TradeUrlInput";
@@ -11,6 +10,7 @@ import AdvancedSettings from "./AddMenu/AdvancedSettings";
 import InfoBar from "./AddMenu/InfoBar";
 import SkinList from "./AddMenu/SkinList";
 import CartSummary from "./AddMenu/CartSummary";
+import getUserBalance from "../Helper/getUserBalance";
 
 const AddMenu = ({
   setCurrentPage,
@@ -21,6 +21,7 @@ const AddMenu = ({
   setUserInput,
   isInfoBarOpen,
   setIsInfoBarOpen,
+  setIsAddMenuOpen,
 }) => {
   const user = useSelector((state) => state.auth.user);
   const [unsortedSkins, setUnsortedSkins] = useState([]);
@@ -33,12 +34,27 @@ const AddMenu = ({
   const [selectedSkins, setSelectedSkins] = useState([]);
   const [getTotalValue, setTotalValue] = useState(0);
   const [unCheckedSkins, setUnCheckedSkins] = useState([]);
+  const [userBalance, setUserBalance] = useState(null);
+
+  useEffect(() => {
+    const fetchUserBalance = async () => {
+      try {
+        const balance = await getUserBalance(user._id);
+        setUserBalance(balance); // ✅ Correctly sets the balance
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserBalance(); // ✅ Call function properly
+  }, []);
 
   const [formData, setFormData] = useState({
     tradeUrl: user.tradeUrl || "",
   });
 
   const wearOptions = [
+    "Any",
     "Factory New",
     "Minimal Wear",
     "Field-Tested",
@@ -56,10 +72,11 @@ const AddMenu = ({
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (!dropdownRef.current.contains(e.target)) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsDropdownOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -126,8 +143,10 @@ const AddMenu = ({
     const { MinFloat, MaxFloat, MaxPrice, Pattern, Wear } = skinData;
     let min = MinFloat;
     let max = MaxFloat;
-
-    if (Wear !== "Multiple") {
+    if (Wear === "Any") {
+      min = 0;
+      max = 0.99;
+    } else if (Wear !== "Multiple") {
       const ranges = {
         "Factory New": [0, 0.07],
         "Minimal Wear": [0.07, 0.15],
@@ -195,7 +214,12 @@ const AddMenu = ({
             setTotalValue={setTotalValue}
             setUnCheckedSkins={setUnCheckedSkins}
           />
-          <CartSummary getTotalValue={getTotalValue} />
+          <CartSummary
+            getTotalValue={getTotalValue}
+            userBalance={userBalance}
+            selectedSkins={selectedSkins}
+            setIsAddMenuOpen={setIsAddMenuOpen}
+          />
         </div>
       </div>
     </div>

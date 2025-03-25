@@ -18,6 +18,17 @@ class ValidationController {
     }
     res.status(200).json(response);
   }
+
+  static async validateOrder(req, res) {
+    const response = await validationService.validateOrder(
+      req.user.id,
+      req.body.order
+    );
+    if (response.error) {
+      return res.status(400).json(response);
+    }
+    res.status(200).json(response);
+  }
 }
 
 module.exports = ValidationController;

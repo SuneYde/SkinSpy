@@ -1,8 +1,9 @@
 import styles from "../styles/components/MonitorBody.module.scss";
 import UpgradeSubscriptionContainer from "./upgradeSubscriptionContainer";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddMenu from "./addMenu";
+import { api } from "../api/api";
 const MonitorBody = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
   const [isAddMenuOpen, setIsAddMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(9);
@@ -62,13 +63,13 @@ const MonitorBody = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
         <div className={styles.skinList}>
           <div className={styles.header}>
             <div className={styles.leftSide}>
-              <h2 className={styles.title}>Skin List</h2>
+              <h2 className={styles.title}>Sessions</h2>
               {userPlan === "Free" && (
                 <button
                   className={styles.boost}
                   onClick={() => setIsUpgradeSubscriptionOpen(true)}
                 >
-                  <span>Boost Position</span>
+                  <span>Boost Buy Positions</span>
                   <div className={styles.icon}>
                     <i className="fa-light fa-bolt"></i>
                   </div>
@@ -80,7 +81,7 @@ const MonitorBody = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
                 onClick={() => setIsAddMenuOpen(true)}
                 className={styles.addSkin}
               >
-                Add
+                Create Sessioon
               </button>
               <button className={styles.refresh}>Edit</button>
             </div>

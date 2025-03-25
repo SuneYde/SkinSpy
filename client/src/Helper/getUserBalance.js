@@ -2,13 +2,8 @@ import { api } from "../api/api";
 
 const getUserBalance = async (user_id) => {
   try {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-
     const response = await api.get("validation/validated-balance", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
     });
     if (response.data.error) {
       console.error(response.data.error);

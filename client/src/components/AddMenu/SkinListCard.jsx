@@ -42,8 +42,9 @@ const SkinListCard = ({ skin, onRemove }) => {
         <div className={styles.weaponInfo}>
           <p className={styles.wantedPrice}>
             Wanted for under: <span className={styles.currency}>$</span>
-            {skin.maxPrice.toFixed(2)} | FloatRange: {skin.minFloat} -{" "}
-            {skin.maxFloat}
+            {Number(skin.maxPrice.toFixed(2))} | FloatRange:{" "}
+            {isNaN(skin.minFloat) ? "0.01" : skin.minFloat} -{" "}
+            {isNaN(skin.maxFloat) ? "0.99" : skin.maxFloat}
             {skin.pattern && ` | Pattern: ${skin.pattern}`}
           </p>
           <p className={styles.skinName}>{skin.skin}</p>
