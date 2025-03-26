@@ -708,99 +708,50 @@
   cursor: pointer;
 }
 
-@media (max-width: 1200px) {
-  .lower {
-    grid-template-columns: 1fr; // Adjust to a single column
-  }
-
-  .weaponFormatted {
-    grid-template-columns: 1fr 1fr; // Reduce to 2 columns
-  }
-}
-
-@media (max-width: 992px) {
+@media (max-width: 1440px) {
   .container {
-    grid-template-rows: auto; // Let height adjust dynamically
+    height: 100%;
+  }
+
+  .searchBody {
+    max-height: 350px;
   }
 
   .searchSkins,
   .details {
-    width: 100%;
+    height: 100%;
   }
 
-  .weaponFormatted {
-    grid-template-columns: 1fr; // Single column for better readability
-  }
-
-  .skinCard {
-    height: auto;
-  }
-
-  .cartSummary {
-    position: static; // Prevents overlap on smaller screens
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .upper,
-  .lower {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .topButtons {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .searchInputContainer {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .inputContainer {
-    grid-template-columns: 1fr; // Stack input and button
+  .btnInput {
+    height: 30px;
+    width: 30px;
   }
 
   .advancedSettings {
-    height: auto;
+    height: 3rem;
   }
 
-  .searchBody {
-    max-height: 300px; // Reduce scrollable height
-  }
-}
-
-@media (max-width: 576px) {
-  .inputContainerAdvanced,
-  .inputContainerAdvancedSolo {
-    grid-template-columns: 1fr;
+  .isUnFolded {
+    height: 18rem;
   }
 
-  .topButtons {
-    flex-direction: column;
+  .advancedBody {
+    height: 12rem;
+  }
+
+  .skinCard {
+    height: 275px;
+  }
+
+  .weaponImg {
+    height: 80px;
   }
 
   .cartSummary {
-    padding: 1rem;
+    height: 200px;
   }
 
-  .addSkin,
-  .filter {
-    width: 100%; // Full width buttons for easier touch interaction
+  .weaponFormatted {
+    grid-template-columns: 1fr 1fr;
   }
-}
-
-.errorText {
-  color: #ff0000;
-  font-family: var(--font-semibold);
-  font-size: 0.75rem;
-  transition: all 0.3s;
-  text-align: center;
 }

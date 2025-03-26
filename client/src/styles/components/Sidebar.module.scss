@@ -96,3 +96,13 @@
 .spanNav {
   font-size: 0.9rem;
 }
+
+@media (max-width: 1440px) {
+  .navButton {
+    padding: 0.5rem 0.65rem;
+  }
+
+  .spanNav {
+    font-size: 0.75rem;
+  }
+}
