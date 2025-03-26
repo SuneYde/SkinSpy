@@ -114,6 +114,9 @@ const AdvancedSettings = ({
                 if (value < 0) {
                   setError("Invalid value");
                   return;
+                } else if (value < 2.5) {
+                  setError("Minimum price is 2.5$");
+                  return;
                 }
                 setError("");
                 setSkinData((prev) => ({ ...prev, MaxPrice: value }));

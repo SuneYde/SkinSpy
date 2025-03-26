@@ -1,16 +1,13 @@
 import styles from "../styles/components/MonitorBody.module.scss";
 import UpgradeSubscriptionContainer from "./upgradeSubscriptionContainer";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddMenu from "./addMenu";
-import { api } from "../api/api";
 const MonitorBody = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
   const [isAddMenuOpen, setIsAddMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(9);
   const [selectedSkin, setSelectedSkin] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [isInfoBarOpen, setIsInfoBarOpen] = useState(false);
-  const user = useSelector((state) => state.auth.user);
   return (
     <div className={styles.container}>
       <div
@@ -42,7 +39,7 @@ const MonitorBody = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
       <div className={styles.upperContainer}>
         <div className={styles.logs}>
           <div className={styles.header}>
-            <h2 className={styles.title}>Logs</h2>
+            <h2 className={styles.title}>Monitored Skins</h2>
           </div>
           <div className={styles.body}></div>
         </div>

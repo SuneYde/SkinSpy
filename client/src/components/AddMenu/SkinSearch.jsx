@@ -58,7 +58,7 @@ const SkinSearch = ({
                       skinRaw.wear_prices[skinRaw.wear_prices.length - 1];
                     const formattedPrice = suggestedPrice * 0.1341;
                     setSkinData({
-                      Wear: "Factory New",
+                      Wear: "Any",
                       MinFloat: "",
                       MaxFloat: "",
                       MaxPrice: formattedPrice,
@@ -72,7 +72,7 @@ const SkinSearch = ({
                     const suggestedPrice = wearValues[wearValues.length - 1];
                     const formattedPrice = suggestedPrice * 0.1341;
                     setSkinData({
-                      Wear: "Factory New",
+                      Wear: "Any",
                       MinFloat: "",
                       MaxFloat: "",
                       MaxPrice: formattedPrice,

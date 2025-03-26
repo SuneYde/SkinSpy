@@ -63,7 +63,7 @@ const AddMenu = ({
   ];
 
   const [skinData, setSkinData] = useState({
-    Wear: "Factory New",
+    Wear: "Any",
     MinFloat: "",
     MaxFloat: "",
     MaxPrice: "",

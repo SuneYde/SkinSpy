@@ -359,6 +359,26 @@
   background-color: #ff0000;
 }
 
+.classified {
+  background-color: #f700ff;
+}
+
+.restricted {
+  background-color: #4c00ff;
+}
+
+.mil-Spec {
+  background-color: #0000ff;
+}
+
+.industrial {
+  background-color: rgb(112, 191, 255);
+}
+
+.consumer {
+  background-color: #b0b0b0;
+}
+
 .moreDiv {
   width: 100%;
   display: flex;
@@ -754,4 +774,16 @@
   .weaponFormatted {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.stattrak {
+  color: #ff5100;
+}
+
+.souvenir {
+  color: #fbff00;
+}
+
+.rare {
+  color: #e22525;
 }

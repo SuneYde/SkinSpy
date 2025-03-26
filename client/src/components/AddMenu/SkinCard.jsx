@@ -9,24 +9,32 @@ const SkinCard = ({ skin, isSelected, onSelect }) => {
     const format = (str) => str.replaceAll(" ", "-").replaceAll(":", "");
 
     if (sanitized.includes("StatTrak")) {
-      return `/images/${format(
-        sanitized.split(" | ")[0].split(" ")[1]
-      )}-${format(sanitized.split(" | ")[1])}.png`;
+      const weaponName = sanitized
+        .split(" | ")[0]
+        .replace("StatTrak", "")
+        .trim();
+      return `/images/${format(weaponName)}-${format(
+        sanitized.split(" | ")[1]
+      )}.png`;
     }
     if (sanitized.includes("Souvenir")) {
-      return `/images/${format(
-        sanitized.split(" | ")[0].split(" ")[1]
-      )}-${format(sanitized.split(" | ")[1].split(" (")[0])}.png`;
+      const weaponName = sanitized
+        .split(" | ")[0]
+        .replace("Souvenir", "")
+        .trim();
+      return `/images/${format(weaponName)}-${format(
+        sanitized.split(" | ")[1].split(" (")[0]
+      )}.png`;
     }
     if (sanitized.includes("Charm")) {
       return `/images/${format(sanitized.split(" | ")[1])}.png`;
     }
-    if (sanitized.includes("Case")) {
-      return `/images/${format(sanitized)}.png`;
+    if (sanitized.includes("Case") && !sanitized.includes("Hardened")) {
+      return `/images/${format(sanitized).replace(" | ", "-")}.png`;
     }
 
     return `/images/${format(sanitized.split(" | ")[0])}-${format(
-      sanitized.split(" | ")[1]
+      sanitized.split(" | ")[1].replace(" | ", "-")
     )}.png`;
   };
 
@@ -64,7 +72,25 @@ const SkinCard = ({ skin, isSelected, onSelect }) => {
         />
       </div>
       <div className={styles.lowerCard}>
-        <div className={styles.name}>{skin.skin}</div>
+        <div
+          className={`${styles.name} ${
+            skin.skin.includes("StatTrak")
+              ? styles.stattrak
+              : skin.skin.includes("Souvenir")
+              ? styles.souvenir
+              : skin.skin.includes("Knife") ||
+                skin.skin.includes("Glove") ||
+                skin.skin.includes("Karambit") ||
+                skin.skin.includes("Bayonet") ||
+                skin.skin.includes("M9") ||
+                skin.skin.includes("Talon") ||
+                skin.skin.includes("Skeleton")
+              ? styles.rare
+              : ""
+          }`}
+        >
+          {skin.skin}
+        </div>
         <div className={styles.priceRange}>
           <span className={styles.dollarSign}>$</span>
           <p className={styles.price}>
