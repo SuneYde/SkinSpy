@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { checkAuth } from "./redux/authActions.js";
 import LoadingPage from "./pages/Loadingpage.jsx";
 import { getBalance } from "./redux/balanceActions.js";
+import { getActiveSkins } from "./redux/userActions.js";
 
 const InitStartup = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const InitStartup = () => {
     const initAuth = async () => {
       await dispatch(checkAuth());
       await dispatch(getBalance());
+      await dispatch(getActiveSkins());
       setIsInitialized(true);
     };
 

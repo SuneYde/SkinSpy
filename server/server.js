@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const authRouter = require("./routes/authRoutes");
 const validationRouter = require("./routes/validationRoutes");
 const monitorRouter = require("./routes/monitorRoutes");
+const userRouter = require("./routes/userRoutes");
 const Skin = require("./models/skinSchema"); // Use the updated model
 dotenv.config();
 
@@ -84,3 +85,4 @@ app.get("/skins", async (req, res) => {
 app.use("/auth", authRouter);
 app.use("/validation", validationRouter);
 app.use("/monitor", monitorRouter);
+app.use("/user", userRouter);

@@ -26,13 +26,6 @@ const TopBar = () => {
           </button>
         </div>
         <div
-          className={styles.inventory}
-          aria-label="Inventory"
-          title="Inventory"
-        >
-          <i className="fa-solid fa-backpack"></i>
-        </div>
-        <div
           className={styles.notifications}
           aria-label="Notifications"
           title="Notifications"

@@ -25,6 +25,11 @@ const Sidebar = () => {
       icon: "fa-light fa-history",
       path: "/trade-history",
     },
+    inventory: {
+      name: "Inventory",
+      icon: "fa-light fa-backpack",
+      path: "/inventory",
+    },
     wallet: {
       name: "Wallet",
       icon: "fa-light fa-wallet",
