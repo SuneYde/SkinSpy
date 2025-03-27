@@ -1,8 +1,11 @@
 import styles from "../styles/components/MonitorBody.module.scss";
 import UpgradeSubscriptionContainer from "./upgradeSubscriptionContainer";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import AddMenu from "./addMenu";
 const MonitorBody = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
+  const activeSkins = useSelector((state) => state.user.activeSkins);
+
   const [isAddMenuOpen, setIsAddMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(9);
   const [selectedSkin, setSelectedSkin] = useState(null);
@@ -41,13 +44,16 @@ const MonitorBody = ({ setIsUpgradeSubscriptionOpen, userPlan }) => {
           <div className={styles.header}>
             <h2 className={styles.title}>Monitored Skins</h2>
           </div>
-          <div className={styles.body}></div>
-        </div>
-        <div className={styles.events}>
-          <div className={styles.header}>
-            <h2 className={styles.title}>Events</h2>
+          <div className={styles.body}>
+            {activeSkins.map((skin) => (
+              <div key={skin._id} className={styles.skin}>
+                <div className={styles.skinName}>{skin.weapon}</div>
+                <div className={styles.skinPrice}>
+                  {skin.users_in_queue.length} in queue
+                </div>
+              </div>
+            ))}
           </div>
-          <div className={styles.body}></div>
         </div>
         <div className={styles.info}>
           <div className={styles.header}>
